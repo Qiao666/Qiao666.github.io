@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Qiao666</title>
+  <title>二木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="personal blog">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Qiao666">
+<meta property="og:title" content="二木">
 <meta property="og:url" content="https://qiao666.github.io/index.html">
-<meta property="og:site_name" content="Qiao666">
+<meta property="og:site_name" content="二木">
 <meta property="og:description" content="personal blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Qiao666">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Qiao666" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -44,7 +44,8 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Qiao666</a>
+        <a href="/" id="logo">二木</a>
+        <div style="color: white;padding: 10px;"><span >为什么要去登山？因为山就在那里</span></div>
       </h1>
       
     </div>
@@ -71,6 +72,109 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-js高级-数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2020-06-08T03:26:22.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">js高级 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>基本类型<ul>
+<li>string：任意字符串</li>
+<li>number：任意数字</li>
+<li>Boolean：true/false</li>
+<li>undefined：undefined，未赋值的var变量</li>
+<li>null：null</li>
+</ul>
+</li>
+<li>对象（引用）类型<ul>
+<li>object：任意对象</li>
+<li>function：特别的对象（可以执行）</li>
+<li>array：特别的对象（数值下标，内部数据有序）</li>
+</ul>
+</li>
+</ul>
+<h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><ul>
+<li><p>typeof：</p>
+<pre><code>特殊情况记一下</code></pre><ul>
+<li>可以判断: undefined/ 数值 / 字符串 / 布尔值 / function</li>
+<li>不能判断: null与object  object与array</li>
+</ul>
+</li>
+<li><p>instanceof：</p>
+<ul>
+<li>可以判断对象类型 </li>
+</ul>
+</li>
+<li><p>===:</p>
+<ul>
+<li>可以判断undefined和null</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>undefined 和null的区别<ul>
+<li>undefine:代表变量定义未赋值</li>
+<li>null：变量的一种特殊的值</li>
+</ul>
+</li>
+<li>何时使用null？<ul>
+<li>初始赋值为null，在开始对象内容不明确时，表明将来赋值为对象</li>
+<li>结束时赋值为null，内存回收，被垃圾回收器回收</li>
+</ul>
+</li>
+<li>严格区分变量类型和数据类型<ul>
+<li>数据的类型<ul>
+<li>基本类型</li>
+<li>对象类型</li>
+</ul>
+</li>
+<li>变量的类型(变量内存值的类型)<ul>
+<li>基本类型: 保存就是基本类型的数据</li>
+<li>引用类型: 保存的是地址值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="ckb6bmxmj0000qsva660gh086" data-title="js高级 1" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-typeof-instanceof/" rel="tag">js数据类型 typeof instanceof</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -178,7 +282,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li></ul>
     </div>
   </div>
 
@@ -188,7 +292,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test1-new/" rel="tag">test1 new</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-typeof-instanceof/" rel="tag">js数据类型 typeof instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test1-new/" rel="tag">test1 new</a></li></ul>
     </div>
   </div>
 
@@ -198,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/test1-new/" style="font-size: 10px;">test1 new</a>
+      <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-typeof-instanceof/" style="font-size: 10px;">js数据类型 typeof instanceof</a> <a href="/tags/test1-new/" style="font-size: 10px;">test1 new</a>
     </div>
   </div>
 
@@ -218,6 +322,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">js高级 1</a>
+          </li>
         
           <li>
             <a href="/2020/06/08/test/">test</a>
