@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>归档: 2020 | 二木</title>
+  <title>js高级-对象基础 | 二木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="二木">
-<meta property="og:url" content="https://qiao666.github.io/archives/2020/index.html">
+  <meta name="description" content="对象什么是对象 多个数据的分装体  用来保存多个数据的容器  可以类比现实中的具有多个属性的事物 为什么要用对象 统一管理多个数据 对象的组成 属性：属性名(字符串)和属性值(任意)组成  方法：一种特别的属性(属性值是函数) 如何访问对象内部数据 .属性名: 编码简单, 有时不能用  [‘属性’]: 编码麻烦, 能通用 何时使用[属性名] 属性名中含有特殊字符： “ - ” ，空格等 var p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js高级-对象基础">
+<meta property="og:url" content="https://qiao666.github.io/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="二木">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="对象什么是对象 多个数据的分装体  用来保存多个数据的容器  可以类比现实中的具有多个属性的事物 为什么要用对象 统一管理多个数据 对象的组成 属性：属性名(字符串)和属性值(任意)组成  方法：一种特别的属性(属性值是函数) 如何访问对象内部数据 .属性名: 编码简单, 有时不能用  [‘属性’]: 编码麻烦, 能通用 何时使用[属性名] 属性名中含有特殊字符： “ - ” ，空格等 var p">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-09T07:35:28.000Z">
+<meta property="article:modified_time" content="2020-06-09T07:53:46.661Z">
 <meta property="article:author" content="Qiao666">
+<meta property="article:tag" content="js对象 对象基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
@@ -71,134 +74,97 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-IEFE/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-06-09T08:20:58.000Z" itemprop="datePublished">6月 9</time>
+        <section id="main"><article id="post-js高级-对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2020-06-09T07:35:28.000Z" itemprop="datePublished">2020-06-09</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/09/js%E9%AB%98%E7%BA%A7-IEFE/">js高级-IEFE-this</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      js高级-对象基础
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-06-09T07:55:20.000Z" itemprop="datePublished">6月 9</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0/">js高级-函数</a>
-    </h1>
-  
+        <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h2><ul>
+<li><p>多个数据的分装体</p>
+</li>
+<li><p>用来保存多个数据的容器</p>
+</li>
+<li><p>可以类比现实中的具有多个属性的事物</p>
+<h2 id="为什么要用对象"><a href="#为什么要用对象" class="headerlink" title="为什么要用对象"></a>为什么要用对象</h2></li>
+<li><p>统一管理多个数据</p>
+<h2 id="对象的组成"><a href="#对象的组成" class="headerlink" title="对象的组成"></a>对象的组成</h2></li>
+<li><p>属性：属性名(字符串)和属性值(任意)组成</p>
+</li>
+<li><p>方法：一种特别的属性(属性值是函数)</p>
+<h2 id="如何访问对象内部数据"><a href="#如何访问对象内部数据" class="headerlink" title="如何访问对象内部数据"></a>如何访问对象内部数据</h2></li>
+<li><p>.属性名: 编码简单, 有时不能用</p>
+</li>
+<li><p>[‘属性’]: 编码麻烦, 能通用</p>
+<h2 id="何时使用-属性名"><a href="#何时使用-属性名" class="headerlink" title="何时使用[属性名]"></a>何时使用[属性名]</h2></li>
+<li><p>属性名中含有特殊字符： “ - ” ，空格等</p>
+<pre><code>var p = {}
+// p.content-type = &apos;text/json&apos; //不能用
+p[&apos;content-type&apos;] = &apos;text/json&apos;
+console.log(p[&apos;content-type&apos;])//text/json
+console.log(p.content-type)//报错</code></pre></li>
+<li><p>属性名为变量时</p>
+<pre><code>var propName = &apos;myAge&apos;
+var value = 18
+// p.propName = value //不能用
+p[propName] = value
+console.log(p[propName])</code></pre></li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-06-09T07:35:28.000Z" itemprop="datePublished">6月 9</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%AF%B9%E8%B1%A1/">js高级-对象基础</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE-%E5%8F%98%E9%87%8F-%E5%86%85%E5%AD%98/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-06-08T10:03:26.000Z" itemprop="datePublished">6月 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%AF%B9%E8%B1%A1/" data-id="ckb7pj8n0000390vaejltd9og" data-title="js高级-对象基础" class="article-share-link">分享</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE-%E5%8F%98%E9%87%8F-%E5%86%85%E5%AD%98/">数据-变量-内存</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-06-08T03:26:22.000Z" itemprop="datePublished">6月 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">数据类型</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/05/26/hello-world/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-05-26T12:29:44.071Z" itemprop="datePublished">5月 26</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/hello-world/">Hello World</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1-%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">js对象 对象基础</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js高级-函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/08/js%E9%AB%98%E7%BA%A7-%E6%95%B0%E6%8D%AE-%E5%8F%98%E9%87%8F-%E5%86%85%E5%AD%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">数据-变量-内存</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
