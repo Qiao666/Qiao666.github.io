@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>categories | 二木</title>
+  <title>js高级-IEFE-this | 二木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://qiao666.github.io/categories/index.html">
+  <meta name="description" content="IEFE Immediately-Invoked Function Expression（立即执行函数表达式）匿名函数自调用  作用 隐藏实现  不会污染外部（全局）命名空间  用它来编码js模块 (function () { &#x2F;&#x2F;匿名函数自调用 var a &#x3D; 3 console.log(a + 3) })() var a &#x3D; 4 console.log(a)&#x2F;&#x2F; 4  THIS 主要研究函数中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js高级-IEFE-this">
+<meta property="og:url" content="https://qiao666.github.io/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-IEFE/index.html">
 <meta property="og:site_name" content="二木">
-<meta property="og:description" content="personal blog">
+<meta property="og:description" content="IEFE Immediately-Invoked Function Expression（立即执行函数表达式）匿名函数自调用  作用 隐藏实现  不会污染外部（全局）命名空间  用它来编码js模块 (function () { &#x2F;&#x2F;匿名函数自调用 var a &#x3D; 3 console.log(a + 3) })() var a &#x3D; 4 console.log(a)&#x2F;&#x2F; 4  THIS 主要研究函数中">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-07T11:26:32.000Z">
-<meta property="article:modified_time" content="2020-06-08T02:28:03.688Z">
+<meta property="article:published_time" content="2020-06-09T08:20:58.000Z">
+<meta property="article:modified_time" content="2020-06-10T11:21:12.982Z">
 <meta property="article:author" content="Qiao666">
+<meta property="article:tag" content="IEFE">
+<meta property="article:tag" content="this">
+<meta property="article:tag" content="js高级">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
@@ -73,12 +76,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-js高级-基础-IEFE" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/categories/index.html" class="article-date">
-  <time class="dt-published" datetime="2020-06-07T11:26:32.000Z" itemprop="datePublished">2020-06-07</time>
+    <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-IEFE/" class="article-date">
+  <time class="dt-published" datetime="2020-06-09T08:20:58.000Z" itemprop="datePublished">2020-06-09</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -87,7 +94,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      categories
+      js高级-IEFE-this
     </h1>
   
 
@@ -95,18 +102,82 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="IEFE"><a href="#IEFE" class="headerlink" title="IEFE"></a>IEFE</h1><blockquote>
+<p>Immediately-Invoked Function Expression（立即执行函数表达式）<br>匿名函数自调用</p>
+</blockquote>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
+<li><p>隐藏实现</p>
+</li>
+<li><p>不会污染外部（全局）命名空间</p>
+</li>
+<li><p>用它来编码js模块</p>
+<pre><code>(function () { //匿名函数自调用
+var a = 3
+console.log(a + 3)
+})()
+var a = 4
+console.log(a)// 4</code></pre></li>
+</ul>
+<h1 id="THIS"><a href="#THIS" class="headerlink" title="THIS"></a>THIS</h1><blockquote>
+<p>主要研究函数中的this</p>
+</blockquote>
+<h2 id="this是什么"><a href="#this是什么" class="headerlink" title="this是什么"></a>this是什么</h2><ul>
+<li>任何函数本质上都是通过某个对象来调用的,如果没有直接指定就是window</li>
+<li>所有函数内部都有一个变量this</li>
+<li>它的值是调用函数的当前对象</li>
+</ul>
+<h2 id="确定this的值"><a href="#确定this的值" class="headerlink" title="确定this的值"></a>确定this的值</h2><ul>
+<li><p>test(): window</p>
+</li>
+<li><p>p.test(): p</p>
+</li>
+<li><p>new test(): 新创建的对象</p>
+</li>
+<li><p>p.call(obj): obj</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">    <span class="keyword">this</span>.getColor = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.color;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.setColor = <span class="function"><span class="keyword">function</span> (<span class="params">color</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">      <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Person(“red”); //this是谁? window</p>
+<p>var p = new Person(“yello”); //this是谁? p</p>
+<p>p.getColor(); //this是谁? p</p>
+<p>  var obj = {};<br>p.setColor.call(obj, “black”); //this是谁? obj</p>
+<p>  var test = p.setColor;<br>test(); //this是谁? window</p>
+<p>  function fun1() {<br>    function fun2() {<br>      console.log(this);<br>  }</p>
+<pre><code>fun2(); //this是谁? window</code></pre><p>  }<br>  fun1();</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qiao666.github.io/categories/index.html" data-id="ckb6gjj7n000cpkvabfch43qu" data-title="categories" class="article-share-link">分享</a>
+      <a data-url="https://qiao666.github.io/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-IEFE/" data-id="ckb9at2n90008w4vah58zbxh4" data-title="js高级-IEFE-this" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/" rel="tag">this</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2020/06/09/js%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0-%E5%8E%9F%E5%9E%8B_%E5%8E%9F%E5%9E%8B%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js函数-原型_原型链
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">js高级-函数</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
