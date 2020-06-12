@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>js高级-函数-作用域_作用域链 | 二木</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="作用域理解 就是一块”地盘”, 一个代码段所在的区域 它是静态的(相对于上下文对象), 在编写代码时就确定分类 全局作用域 函数作用域 块级作用域（ES6）作用 隔离变量，不同作用域下同名变量不会有冲突  作用域链理解 多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外) 查找变量时就是沿着作用域链来查找的查找一个变量的查找规则 在当前作用域下的执行上下文中查找对应的属性, 如果有直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js高级-函数-作用域_作用域链">
+<meta property="og:url" content="https://qiao666.github.io/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/index.html">
+<meta property="og:site_name" content="二木">
+<meta property="og:description" content="作用域理解 就是一块”地盘”, 一个代码段所在的区域 它是静态的(相对于上下文对象), 在编写代码时就确定分类 全局作用域 函数作用域 块级作用域（ES6）作用 隔离变量，不同作用域下同名变量不会有冲突  作用域链理解 多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外) 查找变量时就是沿着作用域链来查找的查找一个变量的查找规则 在当前作用域下的执行上下文中查找对应的属性, 如果有直">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-11T09:48:40.000Z">
+<meta property="article:modified_time" content="2020-06-11T09:48:40.000Z">
+<meta property="article:author" content="Qiao666">
+<meta property="article:tag" content="作用域">
+<meta property="article:tag" content="作用域链">
+<meta property="article:tag" content="块级作用域">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">二木</a>
+        <div style="color: white;padding: 10px;"><span >为什么要去登山？因为山就在那里</span></div>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qiao666.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js高级-函数-作用域-作用域链" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" class="article-date">
+  <time class="dt-published" datetime="2020-06-11T09:48:40.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      js高级-函数-作用域_作用域链
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ul>
+<li>就是一块”地盘”, 一个代码段所在的区域</li>
+<li>它是静态的(相对于上下文对象), 在编写代码时就确定<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2></li>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块级作用域（ES6）<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2></li>
+<li>隔离变量，不同作用域下同名变量不会有冲突</li>
+</ul>
+<h1 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h1><h2 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h2><ul>
+<li>多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外)</li>
+<li>查找变量时就是沿着作用域链来查找的<h2 id="查找一个变量的查找规则"><a href="#查找一个变量的查找规则" class="headerlink" title="查找一个变量的查找规则"></a>查找一个变量的查找规则</h2></li>
+<li>在当前作用域下的执行上下文中查找对应的属性, 如果有直接返回, 否则进入2</li>
+<li>在上一级作用域的执行上下文中查找对应的属性, 如果有直接返回, 否则进入3</li>
+<li>再次执行2的相同操作, 直到全局作用域, 如果还找不到就抛出找不到的异常</li>
+</ul>
+<h1 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h1><blockquote>
+<p>ES6之前js没有块级作用域，它使用var声明变量，以function来划分作用域，大括号“{}” 却限定不了var的作用域,用var声明的变量具有变量提升（declaration hoisting）的效果。</p>
+</blockquote>
+<p>  ES6新增加了一个let，可以在{}， if， for里声明。用法同var，但作用域限定在块级，let声明的变量不存在变量提升。<br>  ES6规定，如果代码块中存在let，这个区块从一开始就形成了封闭作用域,凡是在声明之前就使用，就会报错。即在代码块内，在let声明之前使用变量都是不可用的。<br>例1: 块级作用域 if</p>
+<p>function test(flag) {<br>    if (flag) {<br>        var a = ‘js’<br>    }<br>    // 这里也可以访问 a<br>}<br>变量a在if块里声明的，但在else块和if外都可以访问到val,把var换成let后：</p>
+<pre><code>function test(flag) {
+    if (flag) {
+        let a = &apos;js&apos;
+    } 
+    // 这里也访问不到 a
+}</code></pre><p>例２块级作用域 for</p>
+<pre><code>for(var i=0; i&lt;2; i++){
+    console.log(&apos;outer i: &apos; + i);
+    for(var i=0; i&lt;2; i++){
+    console.log(&apos;inner i: &apos;+i);
+    }
+}</code></pre><p>执行结果如下：</p>
+<pre><code>outer i: 0
+test.html:12 inner i: 0
+test.html:12 inner i: 1</code></pre><p>可以看到，外层循环被打断了，因为ｉ为全局变量所以 i 的值被内层循环修改了，把内层循环的var换成let后：</p>
+<pre><code>for(var i=0; i&lt;2; i++){
+    console.log(&apos;outer i: &apos; + i);
+    for(let i=0; i&lt;2; i++){
+    console.log(&apos;inner i: &apos;+i);
+    }
+}</code></pre><p>执行结果如下：</p>
+<pre><code>outer i: 0
+test.html:12 inner i: 0
+test.html:12 inner i: 1
+test.html:10 outer i: 1
+test.html:12 inner i: 0
+test.html:12 inner i: 1</code></pre><p>示例3: 变量提升</p>
+<p>先使用后声明</p>
+<pre><code>console.log(a) // undefined
+var a;</code></pre><p>变量val先使用后声明，输出undefined，也不报错。把var换成let，就报错了</p>
+<pre><code>console.log(a) // Uncaught ReferenceError: a is not defined
+var a;</code></pre><p>先判断后声明</p>
+<pre><code>if (typeof a == &apos;undefined&apos;) {
+    // ...
+}
+var a = &apos;&apos;</code></pre><p>把var换成let，if处报语法错 Uncaught ReferenceError: a is not defined</p>
+<pre><code>if (typeof a == &apos;undefined&apos;) {
+    // ...
+}
+var a = &apos;&apos;</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" data-id="ckbc2r7o70000kcvac849d2fy" data-title="js高级-函数-作用域_作用域链" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js高级-面试题-作用域_作用域链
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">js高级-面试题-上下文与上下文栈</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">上下文栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" rel="tag">上下文面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 20px;">js高级</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">上下文面试</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 20px;">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 10px;">作用域链</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">块级作用域</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a> <a href="/tags/%E9%97%AD%E5%8C%85/" style="font-size: 20px;">闭包</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%97%AD%E5%8C%85/">js高级-面试题-闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/">js高级-函数-闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-面试题-作用域_作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-函数-作用域_作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">js高级-面试题-上下文与上下文栈</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Qiao666<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>js高级-函数-闭包 | 二木</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="理解闭包如何产生闭包 函数嵌套 内部函数引用了外部函数的数据(变量&#x2F;函数) 二者缺一不可    闭包到底是什么 使用chrome调试查看注意: 闭包存在于嵌套的内部函数中  理解一: 闭包是嵌套的内部函数(绝大部分人) 理解二: 包含被引用变量(函数)的对象(极少数人) 123456789function fn1 () &amp;#123;var a &#x3D; 2var b &#x3D; &#39;abc&#39;function fn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js高级-函数-闭包">
+<meta property="og:url" content="https://qiao666.github.io/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/index.html">
+<meta property="og:site_name" content="二木">
+<meta property="og:description" content="理解闭包如何产生闭包 函数嵌套 内部函数引用了外部函数的数据(变量&#x2F;函数) 二者缺一不可    闭包到底是什么 使用chrome调试查看注意: 闭包存在于嵌套的内部函数中  理解一: 闭包是嵌套的内部函数(绝大部分人) 理解二: 包含被引用变量(函数)的对象(极少数人) 123456789function fn1 () &amp;#123;var a &#x3D; 2var b &#x3D; &#39;abc&#39;function fn">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-12T03:51:54.000Z">
+<meta property="article:modified_time" content="2020-06-12T03:51:54.000Z">
+<meta property="article:author" content="Qiao666">
+<meta property="article:tag" content="闭包">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">二木</a>
+        <div style="color: white;padding: 10px;"><span >为什么要去登山？因为山就在那里</span></div>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qiao666.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js高级-函数-闭包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/" class="article-date">
+  <time class="dt-published" datetime="2020-06-12T03:51:54.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      js高级-函数-闭包
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="理解闭包"><a href="#理解闭包" class="headerlink" title="理解闭包"></a>理解闭包</h1><h2 id="如何产生闭包"><a href="#如何产生闭包" class="headerlink" title="如何产生闭包"></a>如何产生闭包</h2><ul>
+<li>函数嵌套</li>
+<li>内部函数引用了外部函数的数据(变量/函数)<blockquote>
+<p>二者缺一不可</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="闭包到底是什么"><a href="#闭包到底是什么" class="headerlink" title="闭包到底是什么"></a>闭包到底是什么</h2><blockquote>
+<p>使用chrome调试查看<br>注意: 闭包存在于嵌套的内部函数中</p>
+</blockquote>
+<p>理解一: 闭包是嵌套的内部函数(绝大部分人)</p>
+<p>理解二: 包含被引用变量(函数)的对象(极少数人)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">'abc'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span> (<span class="params"></span>) </span>&#123; <span class="comment">//执行函数定义就会产生闭包(不用调用内部函数)</span></span><br><span class="line">  <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// fn2()</span></span><br><span class="line">&#125;</span><br><span class="line">fn1()</span><br></pre></td></tr></table></figure>
+<p>就以上述代码而言，只有当fn1执行时，才会在fn2内部产生闭包，一个包含着引用对象（或者函数）的对象</p>
+<h2 id="闭包作用"><a href="#闭包作用" class="headerlink" title="闭包作用"></a>闭包作用</h2><ul>
+<li>使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
+<li>让函数外部可以操作(读写)到函数内部的数据(变量/函数)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  a++</span><br><span class="line">  <span class="built_in">console</span>.log(a)</span><br><span class="line">  <span class="comment">// return a</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = fn1()</span><br><span class="line">f() <span class="comment">// 3</span></span><br><span class="line">f() <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<p>问题:<br>函数执行完后, 函数内部声明的局部变量是否还存在?  </p>
+<blockquote>
+<p>一般是不存在, 存在于闭中的变量才可能存在</p>
+</blockquote>
+<p>在函数外部能直接访问函数内部的局部变量吗?</p>
+<blockquote>
+<p>不能, 但我们可以通过闭包让外部操作它</p>
+</blockquote>
+<h2 id="闭包的生命周期"><a href="#闭包的生命周期" class="headerlink" title="闭包的生命周期"></a>闭包的生命周期</h2><blockquote>
+<p>产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)<br>死亡: 在嵌套的内部函数成为垃圾对象时</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//此时闭包就已经产生了(函数提升, 内部函数对象已经创建了)</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      a++</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn2</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> f = fn1()</span><br><span class="line">  f() <span class="comment">// 3</span></span><br><span class="line">  f() <span class="comment">// 4</span></span><br><span class="line">  f = <span class="literal">null</span> <span class="comment">//闭包死亡(包含闭包的函数对象成为垃圾对象)</span></span><br></pre></td></tr></table></figure>
+<h2 id="闭包应用"><a href="#闭包应用" class="headerlink" title="闭包应用"></a>闭包应用</h2><p>定义JS模块</p>
+<ul>
+<li>具有特定功能的js文件</li>
+<li>将所有的数据和功能都封装在一个函数内部(私有的)</li>
+<li>只向外暴露一个包信n个方法的对象或函数</li>
+<li>模块的使用者, 只需要通过模块暴露的对象调用方法来实现对应的功能  </li>
+</ul>
+<p>js文件内容：</p>
+<blockquote>
+<p>一般情况</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//私有数据</span></span><br><span class="line">  <span class="keyword">var</span> msg = <span class="string">'My atguigu'</span></span><br><span class="line">  <span class="comment">//操作数据的函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'doSomething() '</span>+msg.toUpperCase())</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doOtherthing</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'doOtherthing() '</span>+msg.toLowerCase())</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//向外暴露对象(给外部使用的方法)</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    doSomething: doSomething,</span><br><span class="line">    doOtherthing: doOtherthing</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用时，需要先生成一个函数对象，才能调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = myModule()</span><br><span class="line"> <span class="built_in">module</span>.doSomething()</span><br><span class="line"> <span class="built_in">module</span>.doOtherthing()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>匿名函数自调用</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//私有数据</span></span><br><span class="line">  <span class="keyword">var</span> msg = <span class="string">'My atguigu'</span></span><br><span class="line">  <span class="comment">//操作数据的函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'doSomething() '</span>+msg.toUpperCase())</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doOtherthing</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'doOtherthing() '</span>+msg.toLowerCase())</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//向外暴露对象(给外部使用的方法)</span></span><br><span class="line">  <span class="built_in">window</span>.myModule2 = &#123;</span><br><span class="line">    doSomething: doSomething,</span><br><span class="line">    doOtherthing: doOtherthing</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<p>该方式可以直接调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myModule2.doSomething()</span><br><span class="line">myModule2.doOtherthing()</span><br></pre></td></tr></table></figure>
+
+<p>后者容易压缩，工作时会常用</p>
+<h2 id="缺点及解决方法"><a href="#缺点及解决方法" class="headerlink" title="缺点及解决方法"></a>缺点及解决方法</h2><p>缺点</p>
+<ul>
+<li>函数执行完后, 函数内的局部变量没有释放, 占用内存时间会变长</li>
+<li>容易造成内存泄露<br>解决</li>
+<li>能不用闭包就不用</li>
+<li>及时释放</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/" data-id="ckbc2r7pv0003kcva5n7v9zw0" data-title="js高级-函数-闭包" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%97%AD%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js高级-面试题-闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">js高级-面试题-作用域_作用域链</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">上下文栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" rel="tag">上下文面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 20px;">js高级</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">上下文面试</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 20px;">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 10px;">作用域链</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">块级作用域</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a> <a href="/tags/%E9%97%AD%E5%8C%85/" style="font-size: 20px;">闭包</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%97%AD%E5%8C%85/">js高级-面试题-闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/">js高级-函数-闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-面试题-作用域_作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-函数-作用域_作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">js高级-面试题-上下文与上下文栈</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Qiao666<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

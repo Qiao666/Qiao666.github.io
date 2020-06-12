@@ -6,19 +6,21 @@
   
   <title>js高级-执行上下文与执行上下文栈 | 二木</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="执行上下文，上下文栈变量，函数提升变量提升函数提升">
+  <meta name="description" content="执行上下文，上下文栈变量，函数提升 说白了就是写代码的时候先引用后声明对于同名的情况 先执行变量提升，再执行函数提升  变量声明提升  通过var定义(声明)的变量, 在定义语句之前就可以访问到  值: undefined   12345678var a &#x3D; 3function fn () &amp;#123;console.log(a)var a &#x3D; 4&amp;#125;fn()       &#x2F;&#x2F;输出 und">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js高级-执行上下文与执行上下文栈">
 <meta property="og:url" content="https://qiao666.github.io/2020/06/10/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/index.html">
 <meta property="og:site_name" content="二木">
-<meta property="og:description" content="执行上下文，上下文栈变量，函数提升变量提升函数提升">
+<meta property="og:description" content="执行上下文，上下文栈变量，函数提升 说白了就是写代码的时候先引用后声明对于同名的情况 先执行变量提升，再执行函数提升  变量声明提升  通过var定义(声明)的变量, 在定义语句之前就可以访问到  值: undefined   12345678var a &#x3D; 3function fn () &amp;#123;console.log(a)var a &#x3D; 4&amp;#125;fn()       &#x2F;&#x2F;输出 und">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qiao666.github.io/images/js%E9%AB%98%E7%BA%A7-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png">
 <meta property="article:published_time" content="2020-06-10T11:17:39.000Z">
-<meta property="article:modified_time" content="2020-06-10T11:37:45.094Z">
+<meta property="article:modified_time" content="2020-06-10T11:17:39.000Z">
 <meta property="article:author" content="Qiao666">
 <meta property="article:tag" content="执行上下文">
 <meta property="article:tag" content="执行上下文栈">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qiao666.github.io/images/js%E9%AB%98%E7%BA%A7-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png">
   
     <link rel="alternate" href="/atom.xml" title="二木" type="application/atom+xml">
   
@@ -101,7 +103,69 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="执行上下文，上下文栈"><a href="#执行上下文，上下文栈" class="headerlink" title="执行上下文，上下文栈"></a>执行上下文，上下文栈</h1><h2 id="变量，函数提升"><a href="#变量，函数提升" class="headerlink" title="变量，函数提升"></a>变量，函数提升</h2><h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><h3 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h3>
+        <h1 id="执行上下文，上下文栈"><a href="#执行上下文，上下文栈" class="headerlink" title="执行上下文，上下文栈"></a>执行上下文，上下文栈</h1><h2 id="变量，函数提升"><a href="#变量，函数提升" class="headerlink" title="变量，函数提升"></a>变量，函数提升</h2><blockquote>
+<p>说白了就是写代码的时候先引用后声明<br>对于同名的情况 先执行变量提升，再执行函数提升</p>
+</blockquote>
+<p>变量声明提升</p>
+<ul>
+<li><p>通过var定义(声明)的变量, 在定义语句之前就可以访问到</p>
+</li>
+<li><p>值: undefined</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line">fn()       <span class="comment">//输出 undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">//undefined  变量提升</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>函数声明提升</p>
+<ul>
+<li><p>通过function声明的函数, 在之前就可以直接调用</p>
+</li>
+<li><p>值: 函数定义(对象)</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    fn2() <span class="comment">//可调用  函数提升</span></span><br><span class="line">    <span class="comment">// fn3() //不能  变量提升</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fn2()'</span>)</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> fn3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'fn3()'</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h2><blockquote>
+<p>执行代码时才产生上下文</p>
+</blockquote>
+</li>
+</ul>
+<p>全局执行上下文</p>
+<ul>
+<li>在执行全局代码前将window确定为全局执行上下文</li>
+<li>对全局数据进行预处理<ul>
+<li>var定义的全局变量==&gt;undefined, 添加为window的属性</li>
+<li>function声明的全局函数==&gt;赋值(fun), 添加为window的方法</li>
+<li>this==&gt;赋值(window)</li>
+</ul>
+</li>
+<li>开始执行全局代码<br>函数（局部）执行上下文</li>
+<li>在调用函数, 准备执行函数体之前, 创建对应的函数执行上下文对象(虚拟的, 存在于栈中)</li>
+<li>对局部数据进行预处理<ul>
+<li>形参变量==&gt;赋值(实参)==&gt;添加为执行上下文的属性</li>
+<li>arguments==&gt;赋值(实参列表), 添加为执行上下文的属性  </li>
+<li>var定义的局部变量==&gt;undefined, 添加为执行上下文的属性 </li>
+<li>function声明的函数 ==&gt;赋值(fun), 添加为执行上下文的方法</li>
+<li>this==&gt;赋值(调用函数的对象)</li>
+</ul>
+</li>
+<li>开始执行函数体代码</li>
+</ul>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><blockquote>
+<p>首先看看以下代码：<br>会产生多少个上下文对象？</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">5</span></span><br><span class="line">foo(x + b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(c + y)</span><br><span class="line">&#125;</span><br><span class="line">bar(<span class="number">10</span>)</span><br><span class="line">bar(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>3个？5个？6个？都有可能啊，别急，我们先来看看js存储上下文的机制：</p>
+<ol>
+<li><p>在全局代码执行前, JS引擎就会创建一个栈来存储管理所有的执行上下文对象</p>
+</li>
+<li><p>在全局执行上下文(window)确定后, 将其添加到栈中(压栈)</p>
+</li>
+<li><p>在函数执行上下文创建后, 将其添加到栈中(压栈)</p>
+</li>
+<li><p>在当前函数执行完后,将栈顶的对象移除(出栈)</p>
+</li>
+<li><p>当所有的代码执行完后, 栈中只剩下window</p>
+<p><em>函数执行结束后，其对应的上下文对象就立刻从上下文栈中释放</em><br><img src="/images/js%E9%AB%98%E7%BA%A7-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88.png" alt="上下文栈"></p>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
@@ -117,10 +181,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          js高级-面试题-上下文与上下文栈
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/06/10/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%8E%9F%E5%9E%8B%E9%93%BE/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">js高级-面试题1</div>
+      <div class="article-nav-title">js高级-面试题-原型_原型链</div>
     </a>
   
 </nav>
@@ -137,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">上下文栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -147,7 +220,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" rel="tag">上下文面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
     </div>
   </div>
 
@@ -157,7 +230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 10px;">js高级</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a>
+      <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 20px;">js高级</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">上下文面试</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 20px;">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 10px;">作用域链</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">块级作用域</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a> <a href="/tags/%E9%97%AD%E5%8C%85/" style="font-size: 20px;">闭包</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 20px;">面试题</a>
     </div>
   </div>
 
@@ -179,23 +252,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/10/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">js高级-执行上下文与执行上下文栈</a>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%97%AD%E5%8C%85/">js高级-面试题-闭包</a>
           </li>
         
           <li>
-            <a href="/2020/06/10/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%8E%9F%E5%9E%8B%E9%93%BE/">js高级-面试题1</a>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E9%97%AD%E5%8C%85/">js高级-函数-闭包</a>
           </li>
         
           <li>
-            <a href="/2020/06/09/js%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0-%E5%8E%9F%E5%9E%8B_%E5%8E%9F%E5%9E%8B%E9%93%BE/">js函数-原型_原型链</a>
+            <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-面试题-作用域_作用域链</a>
           </li>
         
           <li>
-            <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-IEFE/">js高级-IEFE-this</a>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-函数-作用域_作用域链</a>
           </li>
         
           <li>
-            <a href="/2020/06/09/js%E9%AB%98%E7%BA%A7-%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0/">js高级-函数</a>
+            <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">js高级-面试题-上下文与上下文栈</a>
           </li>
         
       </ul>
