@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>剑指offer-03数组中重复的数字</title>
+      <title>03数组中重复的数字</title>
       <link href="/2020/06/14/%E5%89%91%E6%8C%87offer-03%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"/>
       <url>/2020/06/14/%E5%89%91%E6%8C%87offer-03%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</url>
       
@@ -14,6 +14,8 @@
       <categories>
           
           <category> 剑指offer </category>
+          
+          <category> 03-数组中重复的数字 </category>
           
       </categories>
       
@@ -294,7 +296,7 @@
           
           <category> js高级 </category>
           
-          <category> 面试 </category>
+          <category> 面试题 </category>
           
           <category> 上下文栈 </category>
           
@@ -354,7 +356,7 @@
           
           <category> js高级 </category>
           
-          <category> 面试 </category>
+          <category> 面试题 </category>
           
           <category> 原型链 </category>
           
