@@ -73,6 +73,261 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6-扩展部分" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/26/ES6-%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/" class="article-date">
+  <time class="dt-published" datetime="2020-06-26T09:27:23.000Z" itemprop="datePublished">2020-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/">扩展部分</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/06/26/ES6-%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/">ES6-扩展部分</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h1><ol>
+<li><p>includes(str) : 判断是否包含指定的字符串</p>
+</li>
+<li><p>startsWith(str) : 判断是否以指定字符串开头</p>
+</li>
+<li><p>endsWith(str) : 判断是否以指定字符串结尾</p>
+</li>
+<li><p>repeat(count) : 重复指定次数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'abcdefg'</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(str.includes(<span class="string">'a'</span>));<span class="comment">//true</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.includes(<span class="string">'h'</span>));<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//startsWith(str) : 判断是否以指定字符串开头</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.startsWith(<span class="string">'a'</span>));<span class="comment">//true</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.startsWith(<span class="string">'d'</span>));<span class="comment">//false</span></span><br><span class="line">   <span class="comment">//endsWith(str) : 判断是否以指定字符串结尾</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.endsWith(<span class="string">'g'</span>));<span class="comment">//true</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.endsWith(<span class="string">'d'</span>));<span class="comment">//false</span></span><br><span class="line">   <span class="comment">//repeat(count) : 重复指定次数a</span></span><br><span class="line">   <span class="built_in">console</span>.log(str.repeat(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+<h1 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h1></li>
+<li><p>二进制与八进制数值表示法: 二进制用0b, 八进制用0o</p>
+</li>
+<li><p>Number.isFinite(i) : 判断是否是有限大的数</p>
+</li>
+<li><p>Number.isNaN(i) : 判断是否是NaN</p>
+</li>
+<li><p>Number.isInteger(i) : 判断是否是整数</p>
+</li>
+<li><p>Number.parseInt(str) : 将字符串转换为对应的数值</p>
+</li>
+<li><p>Math.trunc(i) : 直接去除小数部分</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0b1010</span>);<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0o56</span>);<span class="comment">//46</span></span><br><span class="line"><span class="comment">//Number.isFinite(i) : 判断是否是有限大的数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isFinite(<span class="literal">NaN</span>));<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isFinite(<span class="number">5</span>));<span class="comment">//true</span></span><br><span class="line"><span class="comment">//Number.isNaN(i) : 判断是否是NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isNaN(<span class="literal">NaN</span>));<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isNaN(<span class="number">5</span>));<span class="comment">//falsse</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Number.isInteger(i) : 判断是否是整数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isInteger(<span class="number">5.23</span>));<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isInteger(<span class="number">5.0</span>));<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isInteger(<span class="number">5</span>));<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Number.parseInt(str) : 将字符串转换为对应的数值</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.parseInt(<span class="string">'123abc'</span>));<span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.parseInt(<span class="string">'a123abc'</span>));<span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Math.trunc(i) : 直接去除小数部分</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.trunc(<span class="number">13.123</span>));<span class="comment">//13</span></span><br></pre></td></tr></table></figure>
+<h1 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h1></li>
+<li><p>Array.from(v) : 将伪数组对象或可遍历对象转换为真数组</p>
+</li>
+<li><p>Array.of(v1, v2, v3) : 将一系列值转换成数组</p>
+</li>
+<li><p>find(function(value, index, arr){return true}) : 找出第一个满足条件返回true的元素</p>
+</li>
+<li><p>findIndex(function(value, index, arr){return true}) : 找出第一个满足条件返回true的元素下标</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Array.from(v) : 将伪数组对象或可遍历对象转换为真数组</span></span><br><span class="line">    <span class="keyword">let</span> btns = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'button'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(btns.length);<span class="comment">//3</span></span><br><span class="line">    <span class="built_in">Array</span>.from(btns).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(item, index);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//Array.of(v1, v2, v3) : 将一系列值转换成数组</span></span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.of(<span class="number">1</span>, <span class="string">'abc'</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line">    <span class="comment">//find(function(value, index, arr)&#123;return true&#125;) : 找出第一个满足条件返回true的元素</span></span><br><span class="line">    <span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> result = arr1.find(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item &gt;<span class="number">3</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(result);<span class="comment">//5</span></span><br><span class="line">    <span class="comment">//findIndex(function(value, index, arr)&#123;return true&#125;) : 找出第一个满足条件返回true的元素下标</span></span><br><span class="line">    <span class="keyword">let</span> result1 = arr1.findIndex(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item &gt;<span class="number">3</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(result1);<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<h1 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h1></li>
+<li><p>Object.is(v1, v2)</p>
+<ul>
+<li>判断2个数据是否完全相等<blockquote>
+<p>根据字符串编码来确定是否相等<br>注意与==，===区分</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Object.assign(target, source1, source2..)</p>
+<ul>
+<li>将源对象的属性复制到目标对象上</li>
+</ul>
+</li>
+<li><p>直接操作 <strong>proto</strong> 属性<br> let obj2 = {};<br> obj2.<strong>proto</strong> = obj1;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.is(<span class="string">'abc'</span>, <span class="string">'abc'</span>));<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>);<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>));<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="number">-0</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.is(<span class="number">0</span>, <span class="number">-0</span>));<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Object.assign(target, source1, source2..)</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">name</span> : <span class="string">'kobe'</span>, <span class="attr">age</span> : <span class="number">39</span>, <span class="attr">c</span>: &#123;<span class="attr">d</span>: <span class="number">2</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.assign(obj1, obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj1.name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//直接操作 __proto__ 属性</span></span><br><span class="line"><span class="keyword">let</span> obj3 = &#123;<span class="attr">name</span> : <span class="string">'anverson'</span>, <span class="attr">age</span> : <span class="number">41</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj4 = &#123;&#125;;</span><br><span class="line">obj4.__proto__ = obj3;</span><br><span class="line"><span class="built_in">console</span>.log(obj4, obj4.name, obj4.age);</span><br></pre></td></tr></table></figure>
+<h1 id="深度克隆deepclone"><a href="#深度克隆deepclone" class="headerlink" title="深度克隆deepclone"></a>深度克隆deepclone</h1><h2 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h2></li>
+</ol>
+<ul>
+<li>据分为基本的数据类型(String, Number, boolean, Null, Undefined)和对象数据类型<br>基本数据类型：<br>特点： 存储的是该对象的实际数据<br>对象数据类型：<br>特点： 存储的是该对象在栈中引用，真实的数据存放在堆内存里<h2 id="复制数据"><a href="#复制数据" class="headerlink" title="复制数据"></a>复制数据</h2>基本数据类型存放的就是实际的数据，可直接复制<br>let number2 = 2;<br>let number1 = number2;<h2 id="克隆数据：对象-数组"><a href="#克隆数据：对象-数组" class="headerlink" title="克隆数据：对象/数组"></a>克隆数据：对象/数组</h2>1、区别： 浅拷贝/深度拷贝<br>判断： 拷贝是否产生了新的数据还是拷贝的是数据的引用<br>知识点：对象数据存放的是对象在栈内存的引用，直接复制的是对象的引用<br>let obj = {username: ‘kobe’}<br>let obj1 = obj; // obj1 复制了obj在栈内存的引用<br>2、常用的拷贝技术<br>1). arr.concat(): 数组浅拷贝<br>2). arr.slice(): 数组浅拷贝<br>3). JSON.parse(JSON.stringify(arr/obj)): 数组或对象深拷贝, 但不能处理函数数据<br>4). 浅拷贝包含函数数据的对象/数组<br>5). 深拷贝包含函数数据的对象/数组</li>
+</ul>
+<h1 id="set和map容器"><a href="#set和map容器" class="headerlink" title="set和map容器"></a>set和map容器</h1><h2 id="Set容器"><a href="#Set容器" class="headerlink" title="Set容器 :"></a>Set容器 :</h2><p>无序不可重复的多个value的集合体</p>
+<ul>
+<li><p>Set()</p>
+</li>
+<li><p>Set(array)</p>
+</li>
+<li><p>add(value)</p>
+</li>
+<li><p>delete(value)</p>
+</li>
+<li><p>has(value)</p>
+</li>
+<li><p>clear()</p>
+</li>
+<li><p>size</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set([1,2,3,4,3,2,1,6]);</span><br><span class="line">console.log(<span class="keyword">set</span>);</span><br><span class="line"><span class="keyword">set</span>.add('abc');</span><br><span class="line">console.log(<span class="keyword">set</span>, <span class="keyword">set</span>.size);</span><br><span class="line">//delete(value)</span><br><span class="line"><span class="keyword">set</span>.delete(2);</span><br><span class="line">console.log(<span class="keyword">set</span>);</span><br><span class="line">//has(value)</span><br><span class="line">console.log(<span class="keyword">set</span>.has(2));//false</span><br><span class="line">console.log(<span class="keyword">set</span>.has(1));//true</span><br><span class="line">//clear()</span><br><span class="line"><span class="keyword">set</span>.clear();</span><br><span class="line">console.log(<span class="keyword">set</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Map容器"><a href="#Map容器" class="headerlink" title="Map容器 :"></a>Map容器 :</h2><p>无序的 key不重复的多个key-value的集合体</p>
+</li>
+<li><p>Map()</p>
+</li>
+<li><p>Map(array)</p>
+</li>
+<li><p>set(key, value)//添加</p>
+</li>
+<li><p>get(key)</p>
+</li>
+<li><p>delete(key)</p>
+</li>
+<li><p>has(key)</p>
+</li>
+<li><p>clear()</p>
+</li>
+<li><p>size</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'abc'</span>, <span class="number">12</span>],[<span class="number">25</span>, <span class="string">'age'</span>]]);</span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br><span class="line">map.set(<span class="string">'男'</span>, <span class="string">'性别'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="number">25</span>));<span class="comment">//age</span></span><br><span class="line"><span class="comment">//delete(key)</span></span><br><span class="line">map.delete(<span class="string">'男'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br><span class="line"><span class="built_in">console</span>.log(map.has(<span class="string">'男'</span>));<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(map.has(<span class="string">'abc'</span>));<span class="comment">//true</span></span><br><span class="line">map.clear();</span><br><span class="line"><span class="built_in">console</span>.log(map);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/26/ES6-%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/" data-id="ckbw68zk7000014vae5357f5a" data-title="ES6-扩展部分" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6%E6%89%A9%E5%B1%95/" rel="tag">ES6扩展</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ES6-ES5回顾" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/06/22/ES6-ES5%E5%9B%9E%E9%A1%BE/" class="article-date">
+  <time class="dt-published" datetime="2020-06-22T01:38:28.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/ES5%E5%9B%9E%E9%A1%BE/">ES5回顾</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/06/22/ES6-ES5%E5%9B%9E%E9%A1%BE/">ES6-ES5回顾</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h1><p>这种模式使得Javascript在更严格的语法条件下运行</p>
+<p>目的(作用)</p>
+<ul>
+<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为</li>
+<li>消除代码运行的一些不安全之处，为代码的安全运行保驾护航</li>
+<li>为未来新版本的Javascript做好铺垫</li>
+</ul>
+<p>使用</p>
+<ul>
+<li>在全局或函数的第一条语句定义为: ‘use strict’;</li>
+<li>如果浏览器不支持, 只解析为一条简单的语句, 没有任何副作用</li>
+</ul>
+<p>语法和行为改变</p>
+<ul>
+<li>必须用var声明变量</li>
+<li>对象不能有重名的属性</li>
+<li>禁止自定义的函数中的this指向window</li>
+<li>创建eval作用域</li>
+</ul>
+<blockquote>
+<p>eval()方法，可以解析传入eval函数的代码执行语句<br>eval(‘alert(name)’)，代码会执行<br>如果不开全局模式，eval内部定义的变量，默认为全局变量<br>会污染作用域，同时容易被恶意代码攻击</p>
+</blockquote>
+<h1 id="json对象"><a href="#json对象" class="headerlink" title="json对象"></a>json对象</h1><ol>
+<li>JSON.stringify(obj/arr)<ul>
+<li>js对象(数组)转换为json对象(数组)</li>
+</ul>
+</li>
+<li>JSON.parse(json)<ul>
+<li>json对象(数组)转换为js对象(数组)</li>
+</ul>
+</li>
+</ol>
+<h1 id="object对象扩展"><a href="#object对象扩展" class="headerlink" title="object对象扩展"></a>object对象扩展</h1><ol>
+<li>Object.create(prototype, [descriptors])<ul>
+<li>作用: 以指定对象为原型创建新的对象</li>
+<li>为新的对象指定新的属性, 并对属性进行描述<br>value : 指定值<br>writable : 标识当前属性值是否是可修改的, 默认为false<br>configurable: 标识当前属性是否可以被删除 默认为false<br>enumerable： 标识当前属性是否能用for in 枚举 默认为false<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span> : <span class="string">'curry'</span>, <span class="attr">age</span> : <span class="number">29</span>&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;&#125;;</span><br><span class="line">obj1 = <span class="built_in">Object</span>.create(obj, &#123;</span><br><span class="line">    sex : &#123;</span><br><span class="line">        value : <span class="string">'男'</span>,</span><br><span class="line">        writable : <span class="literal">true</span><span class="comment">//该属性可修改</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">obj1.sex = <span class="string">'女'</span>;<span class="comment">//</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.sex);<span class="comment">//writable属性为false时，无法修改sex属性，为true时才可修改</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Object.defineProperties(object, descriptors)<ul>
+<li>作用: 为指定对象定义扩展多个属性</li>
+<li>get ：用来获取当前属性值的回调函数</li>
+<li>set ：修改当前属性值时触发的回调函数，并且实参即为修改后的值</li>
+<li>存取器属性：setter,getter一个用来存值，一个用来取值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">        firstName : <span class="string">'curry'</span>,</span><br><span class="line">        lastName : <span class="string">'stephen'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperties(obj2, &#123;</span><br><span class="line">        fullName : &#123;</span><br><span class="line">            <span class="keyword">get</span> : function () &#123;</span><br><span class="line">            <span class="comment">//获取该属性值时，该函数自动调用</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">'-'</span> + <span class="keyword">this</span>.lastName</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="keyword">set</span> : function (data) &#123;<span class="comment">//修改该属性值时，该函数自动调用</span></span><br><span class="line">                <span class="keyword">var</span> names = data.split(<span class="string">'-'</span>);</span><br><span class="line">                <span class="keyword">this</span>.firstName = names[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">this</span>.lastName = names[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(obj2.fullName);</span><br><span class="line">    obj2.firstName = <span class="string">'tim'</span>;</span><br><span class="line">    obj2.lastName = <span class="string">'duncan'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj2.fullName);</span><br><span class="line">    obj2.fullName = <span class="string">'kobe-bryant'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj2.fullName);</span><br></pre></td></tr></table></figure>
+对象本身的两个方法</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>get propertyName(){} 用来得到当前属性值的回调函数</li>
+<li>set propertyName(){} 用来监视当前属性值变化的回调函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">        firstName : <span class="string">'kobe'</span>,</span><br><span class="line">        lastName : <span class="string">'bryant'</span>,</span><br><span class="line">        <span class="keyword">get</span> fullName()&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">' '</span> + <span class="keyword">this</span>.lastName</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">set</span> fullName(data)&#123;</span><br><span class="line">            <span class="keyword">var</span> names = data.split(<span class="string">' '</span>);</span><br><span class="line">            <span class="keyword">this</span>.firstName = names[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">this</span>.lastName = names[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.fullName);</span><br><span class="line">    obj.fullName = <span class="string">'curry stephen'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.fullName);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Array的扩展"><a href="#Array的扩展" class="headerlink" title="Array的扩展"></a>Array的扩展</h1><ol>
+<li>Array.prototype.indexOf(value) : 得到值在数组中的第一个下标</li>
+<li>Array.prototype.lastIndexOf(value) : 得到值在数组中的最后一个下标</li>
+<li>Array.prototype.forEach(function(item, index){}) : 遍历数组</li>
+<li>Array.prototype.map(function(item, index){}) : 遍历数组返回一个新的数组，返回加工之后的值</li>
+<li>Array.prototype.filter(function(item, index){}) : 遍历过滤出一个新的子数组， 返回条件为true的值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line">    <span class="built_in">console</span>.log(arr.indexOf(<span class="number">6</span>));<span class="comment">//2</span></span><br><span class="line">    <span class="comment">//Array.prototype.lastIndexOf(value) : 得到值在数组中的最后一个下标</span></span><br><span class="line">    <span class="built_in">console</span>.log(arr.lastIndexOf(<span class="number">6</span>));<span class="comment">//5</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Array.prototype.forEach(function(item, index)&#123;&#125;) : 遍历数组</span></span><br><span class="line">    arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(item, index);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Array.prototype.map(function(item, index)&#123;&#125;) : 遍历数组返回一个新的数组，返回加工之后的值</span></span><br><span class="line">    <span class="keyword">var</span> arr1 = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item + <span class="number">10</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(arr, arr1);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Array.prototype.filter(function(item, index)&#123;&#125;) : 遍历过滤出一个新的子数组， 返回条件为true的值</span></span><br><span class="line">    <span class="keyword">var</span> arr2 = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item &gt; <span class="number">4</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(arr, arr2);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="Function扩展"><a href="#Function扩展" class="headerlink" title="Function扩展"></a>Function扩展</h1><ol>
+<li>Function.prototype.bind(obj) :<ul>
+<li>作用: 将函数内的this绑定为obj, 并将函数返回</li>
+</ul>
+</li>
+<li>面试题: 区别bind()与call()和apply()?<ul>
+<li>都能指定函数中的this</li>
+<li>call()/apply()是立即调用函数</li>
+<li>bind()是将函数返回</li>
+</ul>
+</li>
+<li>需要传入参数时<ul>
+<li>call()直接从第二个参数开始，依次传入</li>
+<li>apply()第二参数必须是数组，传入放在数组里<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = <span class="string">'kobe'</span>;</span><br><span class="line">       <span class="keyword">this</span>.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">   fun.bind(obj, <span class="number">12</span>)();<span class="comment">//直接自调用bind返回函数</span></span><br><span class="line">   fun.call(obj,<span class="number">33</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(obj.age);<span class="comment">//输出为33</span></span><br><span class="line">   <span class="comment">//fun.apply(obj,33);//报错</span></span><br><span class="line">   fun.apply(obj,[<span class="number">33</span>]);<span class="comment">//</span></span><br><span class="line">   <span class="built_in">console</span>.log(obj.age);<span class="comment">//输出为33</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qiao666.github.io/2020/06/22/ES6-ES5%E5%9B%9E%E9%A1%BE/" data-id="ckbrt13e90000rsva2z6h51yh" data-title="ES6-ES5回顾" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES5/" rel="tag">ES5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ES6-常用变化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/06/22/ES6-%E5%B8%B8%E7%94%A8%E5%8F%98%E5%8C%96/" class="article-date">
@@ -970,170 +1225,11 @@
 
 
   
-    <article id="post-js高级-面试题-作用域-作用域链" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" class="article-date">
-  <time class="dt-published" datetime="2020-06-12T03:27:15.000Z" itemprop="datePublished">2020-06-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-面试题-作用域_作用域链</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="作用域面试题"><a href="#作用域面试题" class="headerlink" title="作用域面试题"></a>作用域面试题</h1><h2 id="第一题-输出什么"><a href="#第一题-输出什么" class="headerlink" title="第一题 输出什么"></a>第一题 输出什么</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</span><br><span class="line">f();</span><br><span class="line">&#125;</span><br><span class="line">show(fn);<span class="comment">//10</span></span><br></pre></td></tr></table></figure>
-
-<p>js中的作用域是静态作用域，在代码执行前就已经划分好了<br>当执行show（fn）时，fn内部没有定义x，故fn向外层，对于上述函数，就是全局作用域中找，故输出为：10</p>
-<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><blockquote>
-<p>输出什么</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">fn2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(fn2)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn2()</span><br></pre></td></tr></table></figure>
-<p>显然<br>fn（）会输出自身<br>而obj.fn（2） 则会报错，因为其输出的变量fn2在obj中，而全局作用域中也只有obj，没有fn2</p>
-<blockquote>
-<p>要想输出fn2，怎么办呢</p>
-</blockquote>
-<p>很简单，只需要把输出语句<br>     console.log(fn2)<br>改为<br>      console.log(this.fn2)<br>利用this指向引用对象本身，则该函数就会从引用对象中找匹配的变量</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qiao666.github.io/2020/06/12/js%E9%AB%98%E7%BA%A7-%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" data-id="ckbc2r7q70006kcva43yl9sxu" data-title="js高级-面试题-作用域_作用域链" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-js高级-函数-作用域-作用域链" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" class="article-date">
-  <time class="dt-published" datetime="2020-06-11T09:48:40.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a>►<a class="article-category-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">js高级-函数-作用域_作用域链</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><ul>
-<li>就是一块”地盘”, 一个代码段所在的区域</li>
-<li>它是静态的(相对于上下文对象), 在编写代码时就确定<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2></li>
-<li>全局作用域</li>
-<li>函数作用域</li>
-<li>块级作用域（ES6）<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2></li>
-<li>隔离变量，不同作用域下同名变量不会有冲突</li>
-</ul>
-<h1 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h1><h2 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h2><ul>
-<li>多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外)</li>
-<li>查找变量时就是沿着作用域链来查找的<h2 id="查找一个变量的查找规则"><a href="#查找一个变量的查找规则" class="headerlink" title="查找一个变量的查找规则"></a>查找一个变量的查找规则</h2></li>
-<li>在当前作用域下的执行上下文中查找对应的属性, 如果有直接返回, 否则进入2</li>
-<li>在上一级作用域的执行上下文中查找对应的属性, 如果有直接返回, 否则进入3</li>
-<li>再次执行2的相同操作, 直到全局作用域, 如果还找不到就抛出找不到的异常</li>
-</ul>
-<h1 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h1><blockquote>
-<p>ES6之前js没有块级作用域，它使用var声明变量，以function来划分作用域，大括号“{}” 却限定不了var的作用域,用var声明的变量具有变量提升（declaration hoisting）的效果。</p>
-</blockquote>
-<p>  ES6新增加了一个let，可以在{}， if， for里声明。用法同var，但作用域限定在块级，let声明的变量不存在变量提升。<br>  ES6规定，如果代码块中存在let，这个区块从一开始就形成了封闭作用域,凡是在声明之前就使用，就会报错。即在代码块内，在let声明之前使用变量都是不可用的。<br>例1: 块级作用域 if</p>
-<p>function test(flag) {<br>    if (flag) {<br>        var a = ‘js’<br>    }<br>    // 这里也可以访问 a<br>}<br>变量a在if块里声明的，但在else块和if外都可以访问到val,把var换成let后：</p>
-<pre><code>function test(flag) {
-    if (flag) {
-        let a = &apos;js&apos;
-    } 
-    // 这里也访问不到 a
-}</code></pre><p>例２块级作用域 for</p>
-<pre><code>for(var i=0; i&lt;2; i++){
-    console.log(&apos;outer i: &apos; + i);
-    for(var i=0; i&lt;2; i++){
-    console.log(&apos;inner i: &apos;+i);
-    }
-}</code></pre><p>执行结果如下：</p>
-<pre><code>outer i: 0
-test.html:12 inner i: 0
-test.html:12 inner i: 1</code></pre><p>可以看到，外层循环被打断了，因为ｉ为全局变量所以 i 的值被内层循环修改了，把内层循环的var换成let后：</p>
-<pre><code>for(var i=0; i&lt;2; i++){
-    console.log(&apos;outer i: &apos; + i);
-    for(let i=0; i&lt;2; i++){
-    console.log(&apos;inner i: &apos;+i);
-    }
-}</code></pre><p>执行结果如下：</p>
-<pre><code>outer i: 0
-test.html:12 inner i: 0
-test.html:12 inner i: 1
-test.html:10 outer i: 1
-test.html:12 inner i: 0
-test.html:12 inner i: 1</code></pre><p>示例3: 变量提升</p>
-<p>先使用后声明</p>
-<pre><code>console.log(a) // undefined
-var a;</code></pre><p>变量val先使用后声明，输出undefined，也不报错。把var换成let，就报错了</p>
-<pre><code>console.log(a) // Uncaught ReferenceError: a is not defined
-var a;</code></pre><p>先判断后声明</p>
-<pre><code>if (typeof a == &apos;undefined&apos;) {
-    // ...
-}
-var a = &apos;&apos;</code></pre><p>把var换成let，if处报语法错 Uncaught ReferenceError: a is not defined</p>
-<pre><code>if (typeof a == &apos;undefined&apos;) {
-    // ...
-}
-var a = &apos;&apos;</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qiao666.github.io/2020/06/11/js%E9%AB%98%E7%BA%A7-%E5%87%BD%E6%95%B0-%E4%BD%9C%E7%94%A8%E5%9F%9F-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" data-id="ckbc2r7o70000kcvac849d2fy" data-title="js高级-函数-作用域_作用域链" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1144,7 +1240,7 @@ var a = &apos;&apos;</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/ES5%E5%9B%9E%E9%A1%BE/">ES5回顾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/%E5%B8%B8%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E6%96%B9%E6%B3%95/">常用关键字和方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/">扩展部分</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E5%92%8Cmd%E8%AF%AD%E6%B3%95/">基本流程和md语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/">对象</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/%E5%88%9B%E5%BB%BA/">创建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF%E6%A8%A1%E5%BC%8F/">继承模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E7%BA%BF%E7%A8%8B-%E4%BA%8B%E4%BB%B6/">线程_事件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">上下文栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/">03-数组中重复的数字</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/">04-二维数组中的查找</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/06%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/">06从尾到头打印链表</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/07%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/">07重建二叉树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/08%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9/">08二叉树的下一个节点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/09%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">09用两个栈实现队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/11%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/">11旋转数组最小数字</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/12%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">12矩阵中的路径</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/13%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">13机器人运动范围</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/14%E5%89%AA%E7%BB%B3%E5%AD%90/">14剪绳子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/15%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/">15二进制中1的个数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/16%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">16数值的整数次方</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/17%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7n%E4%BD%8D%E7%9A%84%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0/">17打印从1到最大n位的十进制数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/18%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">18删除链表的节点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/19%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%B9%E9%85%8D/">19正则表达式的匹配</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">斐波那契数列</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/">我的云之路</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/ECS%E7%AE%80%E4%BB%8B/">ECS简介</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/ES5%E5%9B%9E%E9%A1%BE/">ES5回顾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/%E5%B8%B8%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E6%96%B9%E6%B3%95/">常用关键字和方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/%E6%89%A9%E5%B1%95%E9%83%A8%E5%88%86/">扩展部分</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E5%92%8Cmd%E8%AF%AD%E6%B3%95/">基本流程和md语法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/">js高级</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%87%BD%E6%95%B0/">js函数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/js%E5%9F%BA%E7%A1%80/">js基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/">函数</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">作用域和作用域链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%87%BD%E6%95%B0/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/">对象</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/%E5%88%9B%E5%BB%BA/">创建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF%E6%A8%A1%E5%BC%8F/">继承模式</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E7%BA%BF%E7%A8%8B-%E4%BA%8B%E4%BB%B6/">线程_事件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/">上下文栈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E4%BD%9C%E7%94%A8%E5%9F%9F/">作用域</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js%E9%AB%98%E7%BA%A7/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%97%AD%E5%8C%85/">闭包</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/">03-数组中重复的数字</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/04-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/">04-二维数组中的查找</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/06%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/">06从尾到头打印链表</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/07%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/">07重建二叉树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/08%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9/">08二叉树的下一个节点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/09%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">09用两个栈实现队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/11%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/">11旋转数组最小数字</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/12%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">12矩阵中的路径</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/13%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">13机器人运动范围</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/14%E5%89%AA%E7%BB%B3%E5%AD%90/">14剪绳子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/15%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/">15二进制中1的个数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/16%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">16数值的整数次方</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/17%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7n%E4%BD%8D%E7%9A%84%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0/">17打印从1到最大n位的十进制数</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/18%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">18删除链表的节点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/19%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%B9%E9%85%8D/">19正则表达式的匹配</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">20表示数值的字符串</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/21%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D/">21调整数组顺序使奇数位于偶数前</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87offer/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">斐波那契数列</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/">我的云之路</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/ECS%E7%AE%80%E4%BB%8B/">ECS简介</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
     </div>
   </div>
 
@@ -1154,7 +1250,7 @@ var a = &apos;&apos;</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECS%E7%AE%80%E4%BB%8B/" rel="tag">ECS简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/" rel="tag">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E6%89%A9%E5%B1%95/" rel="tag">ES6扩展</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="tag">hexo基本使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/md%E8%AF%AD%E6%B3%95/" rel="tag">md语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" rel="tag">上下文面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">八皇后问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83/" rel="tag">创建模式比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87offer/" rel="tag">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" rel="tag">对象创建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF/" rel="tag">对象继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/" rel="tag">我的云之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/" rel="tag">数值的整数次方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8E%92%E5%BA%8F/" rel="tag">查找和排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B/" rel="tag">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9/" rel="tag">链表删除节点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECS%E7%AE%80%E4%BB%8B/" rel="tag">ECS简介</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/" rel="tag">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E6%89%A9%E5%B1%95/" rel="tag">ES6扩展</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IEFE/" rel="tag">IEFE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="tag">hexo基本使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instanceof/" rel="tag">instanceof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%87%BD%E6%95%B0/" rel="tag">js函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E5%AF%B9%E8%B1%A1/" rel="tag">js对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">js数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%9D%A2%E8%AF%95/" rel="tag">js面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js%E9%AB%98%E7%BA%A7/" rel="tag">js高级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/md%E8%AF%AD%E6%B3%95/" rel="tag">md语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/" rel="tag">prototype</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/" rel="tag">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeof/" rel="tag">typeof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" rel="tag">上下文面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E4%BB%B6/" rel="tag">事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" rel="tag">作用域链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">八皇后问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="tag">内存管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" rel="tag">函数参数传递</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" rel="tag">函数调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83/" rel="tag">创建模式比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%91%E6%8C%87offer/" rel="tag">剑指offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" rel="tag">原型链面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" rel="tag">变量赋值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="tag">回调函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" rel="tag">块级作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" rel="tag">对象创建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="tag">对象基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF/" rel="tag">对象继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/" rel="tag">我的云之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">执行上下文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" rel="tag">执行上下文栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/" rel="tag">数值的整数次方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8E%92%E5%BA%8F/" rel="tag">查找和排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B/" rel="tag">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">表示数值的字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9/" rel="tag">链表删除节点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85/" rel="tag">闭包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
     </div>
   </div>
 
@@ -1164,7 +1260,7 @@ var a = &apos;&apos;</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ECS%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">ECS简介</a> <a href="/tags/ES5/" style="font-size: 10px;">ES5</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/ES6%E6%89%A9%E5%B1%95/" style="font-size: 10px;">ES6扩展</a> <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/hexo%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">hexo基本使用</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 16.67px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">js高级</a> <a href="/tags/md%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">md语法</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">上下文面试</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">事件</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 13.33px;">二叉树</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 13.33px;">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 10px;">作用域链</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" style="font-size: 10px;">八皇后问题</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83/" style="font-size: 10px;">创建模式比较</a> <a href="/tags/%E5%89%91%E6%8C%87offer/" style="font-size: 20px;">剑指offer</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 13.33px;">回溯</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">块级作用域</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" style="font-size: 10px;">对象创建</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">对象继承</a> <a href="/tags/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/" style="font-size: 10px;">我的云之路</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a> <a href="/tags/%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/" style="font-size: 10px;">数值的整数次方</a> <a href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" style="font-size: 10px;">斐波那契数列</a> <a href="/tags/%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">查找和排序</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">线程</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9/" style="font-size: 10px;">链表删除节点</a> <a href="/tags/%E9%97%AD%E5%8C%85/" style="font-size: 13.33px;">闭包</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 13.33px;">面试题</a>
+      <a href="/tags/ECS%E7%AE%80%E4%BB%8B/" style="font-size: 10px;">ECS简介</a> <a href="/tags/ES5/" style="font-size: 10px;">ES5</a> <a href="/tags/ES6/" style="font-size: 13.33px;">ES6</a> <a href="/tags/ES6%E6%89%A9%E5%B1%95/" style="font-size: 10px;">ES6扩展</a> <a href="/tags/IEFE/" style="font-size: 10px;">IEFE</a> <a href="/tags/hexo%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">hexo基本使用</a> <a href="/tags/instanceof/" style="font-size: 10px;">instanceof</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js%E5%87%BD%E6%95%B0/" style="font-size: 10px;">js函数</a> <a href="/tags/js%E5%AF%B9%E8%B1%A1/" style="font-size: 16.67px;">js对象</a> <a href="/tags/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">js数据类型</a> <a href="/tags/js%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">js面试</a> <a href="/tags/js%E9%AB%98%E7%BA%A7/" style="font-size: 16.67px;">js高级</a> <a href="/tags/md%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">md语法</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/typeof/" style="font-size: 10px;">typeof</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">上下文面试</a> <a href="/tags/%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">事件</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 13.33px;">二叉树</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 13.33px;">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 10px;">作用域链</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" style="font-size: 10px;">八皇后问题</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 10px;">内存管理</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/" style="font-size: 10px;">函数参数传递</a> <a href="/tags/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/" style="font-size: 10px;">函数调用</a> <a href="/tags/%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83/" style="font-size: 10px;">创建模式比较</a> <a href="/tags/%E5%89%91%E6%8C%87offer/" style="font-size: 20px;">剑指offer</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">原型链面试</a> <a href="/tags/%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC/" style="font-size: 10px;">变量赋值</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 13.33px;">回溯</a> <a href="/tags/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" style="font-size: 10px;">回调函数</a> <a href="/tags/%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 10px;">块级作用域</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" style="font-size: 10px;">对象创建</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">对象基础</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">对象继承</a> <a href="/tags/%E6%88%91%E7%9A%84%E4%BA%91%E4%B9%8B%E8%B7%AF/" style="font-size: 10px;">我的云之路</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">执行上下文</a> <a href="/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88/" style="font-size: 10px;">执行上下文栈</a> <a href="/tags/%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/" style="font-size: 10px;">数值的整数次方</a> <a href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" style="font-size: 10px;">斐波那契数列</a> <a href="/tags/%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">查找和排序</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 10px;">树</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">线程</a> <a href="/tags/%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 10px;">表示数值的字符串</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9/" style="font-size: 10px;">链表删除节点</a> <a href="/tags/%E9%97%AD%E5%8C%85/" style="font-size: 13.33px;">闭包</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 13.33px;">面试题</a>
     </div>
   </div>
 
@@ -1186,6 +1282,14 @@ var a = &apos;&apos;</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/07/11/%E5%89%91%E6%8C%87offer-21%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D/">剑指offer-21调整数组顺序使奇数位于偶数前</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/11/%E5%89%91%E6%8C%87offer-20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">剑指offer-20表示数值的字符串</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/10/%E5%89%91%E6%8C%87offer-19%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%8C%B9%E9%85%8D/">剑指offer-19正则表达式的匹配</a>
           </li>
         
@@ -1195,14 +1299,6 @@ var a = &apos;&apos;</code></pre>
         
           <li>
             <a href="/2020/07/09/%E5%89%91%E6%8C%87offer-17%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0/">剑指offer-17打印从1到最大的n位十进制数</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/09/%E5%89%91%E6%8C%87offer-16%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">剑指offer-16数值的整数次方</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/08/%E5%89%91%E6%8C%87offer-15%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/">剑指offer-15二进制中1的个数</a>
           </li>
         
       </ul>
